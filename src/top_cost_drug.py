@@ -7,17 +7,17 @@ Created on Thu Jul 19 11:35:51 2018
 import re
 import numpy as np
 
-input_file = "/input/itcont.txt"
-fileHandle = open('input_file', 'r') 
+#input_file = "/input/itcont.txt"
+#fileHandle = open('input_file', 'r') 
 
-#fileHandle = """
-#id,prescriber_last_name,prescriber_first_name,drug_name,drug_cost
-#1000000001,Smith,James,AMBIEN,100
-#1000000002,Garcia,Maria,AMBIEN,200
-#1000000003,Johnson,James,CHLORPROMAZINE,1000
-#1000000004,Rodriguez,Maria,CHLORPROMAZINE,2000
-#1000000005,Smith,David,BENZTROPINE MESYLATE,1500
-#"""
+fileHandle = """
+id,prescriber_last_name,prescriber_first_name,drug_name,drug_cost
+1000000001,Smith,James,AMBIEN,100
+1000000002,Garcia,Maria,AMBIEN,200
+1000000003,Johnson,James,CHLORPROMAZINE,1000
+1000000004,Rodriguez,Maria,CHLORPROMAZINE,2000
+1000000005,Smith,David,BENZTROPINE MESYLATE,1500
+"""
 input_data = re.sub(r'(\n)', r',\1', fileHandle)   
 fields = input_data.split(',')    
 del fields[0]
@@ -31,7 +31,7 @@ length_of_fields=len(fields)
 # drug_cost at indices 4 (title), 9, 14, 19, 24, 29
 
 
-outputfile = open('/output/top_cost_drug.txt','w') 
+#outputfile = open('/output/top_cost_drug.txt','w') 
 
 # get list of drug names
 i=8
@@ -88,7 +88,7 @@ while j<number_of_unique_drugs:
 counter=0
 print("drug_name,number_of_prescribers,total_cost \n")
 while counter<number_of_unique_drugs:
-    print(unique_drug_list[counter], number_of_prescribers[counter], unique_cost_list[counter])
+    print(unique_drug_list[counter],',', number_of_prescribers[counter],',', unique_cost_list[counter])
     print("\n")
     counter=counter+1
         
